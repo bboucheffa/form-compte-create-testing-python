@@ -38,7 +38,7 @@ jobs:
 
       - name: Run Tests with Xvfb
         run: |
-          xvfb-run -a pytest -v --disable-warnings --html=report.html --self-contained-html
+          pytest -v --disable-warnings --html=report.html --self-contained-html
           
       - name: Upload HTML Report
         uses: actions/upload-artifact@v4
