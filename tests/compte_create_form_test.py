@@ -118,7 +118,7 @@ def test_women_with_condition(driver):
     pays = select_pays.first_selected_option.text
     genre_value = genre.get_attribute("value")
 
-    breakpoint()
+    #breakpoint()
     select_product = Select(driver.find_element(By.ID, "select-c283"))
 
     if genre_value == "women" and pays == "Italie":
