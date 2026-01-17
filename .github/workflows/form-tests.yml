@@ -27,36 +27,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Installer Chrome pour Selenium
-      - name: Install Google Chrome
+      # Installer Chrome et ses dépendances
+      - name: Install Chrome & dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-
-      # Installer les dépendances nécessaires pour Chrome
-      - name: Install Chrome dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            wget \
-            unzip \
-            xvfb \
-            libnss3 \
-            libxss1 \
-            libappindicator3-1 \
-            fonts-liberation \
-            libasound2t64 \
-            libatk1.0-0 \
-            libcups2 \
-            libgtk-3-0 \
-            libx11-xcb1 \
-            libxcomposite1 \
-            libxdamage1 \
-            libxrandr2 \
-            libpangocairo-1.0-0 \
+          sudo apt-get install -y google-chrome-stable xvfb \
+            wget unzip libnss3 libxss1 libappindicator3-1 fonts-liberation \
+            libasound2t64 libatk1.0-0 libcups2 libgtk-3-0 libx11-xcb1 \
+            libxcomposite1 libxdamage1 libxrandr2 libpangocairo-1.0-0 \
             libxshmfence1
 
-      # Lancer les tests pytest
-      - name: Run Tests
+      - name: Run Tests with Xvfb
         run: |
-          pytest -v --maxfail=1 --disable-warnings
+          xvfb-run -a pytest -v --maxfail=1 --disable-warnings
