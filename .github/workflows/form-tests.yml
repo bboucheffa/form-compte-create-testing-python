@@ -38,7 +38,7 @@ jobs:
 
       - name: Run Tests with Xvfb
         run: |
-          xvfb-run -a pytest -v --disable-warnings --html=report.html --self-contained-html
+          pytest -v --disable-warnings --html=report.html --self-contained-html
       #xvfb : “X Virtual Framebuffer”, c’est un serveur X virtuel qui crée un affichage graphique en mémoire.
 
       - name: Upload HTML Report
